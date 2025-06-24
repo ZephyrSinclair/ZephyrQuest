@@ -11,9 +11,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
     grid-row: 1 / span 2;
-    grid-column: 1 / span 4;
+    grid-column: 1 / span 6;
     background-color: aqua;
 }
 
@@ -21,52 +20,51 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    grid-row: 1 / span 2;
-    grid-column: 5 / span 2;
+    grid-row: 3 / span 2;
+    grid-column: 1 / span 2;
     background-color: brown;
 }
 #inventory {
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    grid-row: 1 / span 2;
-    grid-column: 7 / span 2;
+    grid-row: 9 / span 2;
+    grid-column: 1 / span 2;
     background-color: bisque;
+    border: 2px solid black;
 }
 #store {
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    grid-row: 1 / span 2;
-    grid-column: 9 / span 2;
+    grid-row: 5 / span 2;
+    grid-column: 1 / span 2;
     background-color: blueviolet;
 }
 #cave {
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    grid-row: 1 / span 2;
-    grid-column: 11 / span 2;
+    grid-row: 7 / span 2;
+    grid-column: 1 / span 2;
     background-color: cadetblue;
+    border: 2px solid black;
 }
 #inventory-display {
     display: flex;
     align-items: center;
     justify-content: center;
-    grid-row: 9 / span 3;
+    grid-row: 11 / span 2;
     grid-column: 1 / span 6;
-    background-color: pink
+    background-color: pink;
+    border: 2px solid black;
 }
 #buy-health-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    grid-row: 3 / span 2;
-    grid-column: 9/ span 2;
+    grid-row: 5 / span 2;
+    grid-column: 3/ span 2;
     background-color: crimson;
     border: 2px solid black
 }
@@ -74,20 +72,26 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0 1vw;
     background-color: darkblue;
     grid-row: 3 / span 2;
-    grid-column : 5 / span 2;
-    color: seashell
+    grid-column : 3 / span 2;
+    color: seashell;
+    font-size: 1.1rem;
 }
 #mp {
-    grid-row: 5 / span 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1vw;
+    grid-row: 3 / span 2;
     grid-column: 5 /span 2;
     background-color:deepskyblue;
 }
 
 #buy-mana-btn {
     grid-row: 5 / span 2;
-    grid-column: 9 / span 2;
+    grid-column: 5 / span 2;
     background-color: beige;
     border: 2px solid black;
 }
@@ -97,23 +101,23 @@
     align-items: center;
     justify-content: center;
     background-color: greenyellow;
-    grid-row: 3 / span 2;
-    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+    grid-column: 7 / span 3;
 }
 #brass-knuckles {
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: darkturquoise;
-    grid-row: 7 / span 2;
-    grid-column: 9 / span 2;
+    grid-row: 5 / span 2;
+    grid-column: 7 / span 2;
     border: 2px solid black;
 }
 #claymore {
     display: flex;
     align-items: center;
     justify-content: center;
-    grid-row: 9 / span 2;
+    grid-row: 5 / span 2;
     grid-column: 9 / span 2;
     background-color: darkgoldenrod;
     border: 2px solid black;
@@ -125,12 +129,103 @@
 }
 
 #brass-knuckles.purchased {
-    background-color: red;
-    pointer-events: none
+   background-color: black;
+   color: seashell;
+    pointer-events: none;
+    opacity: 0.6;
 }
-
 #claymore.purchased {
-     background-color: red;
-    pointer-events: none
+    opacity: 0.6;
+     background-color:black;
+     color: seashell;
+    pointer-events: none;
+}
+#equip-brass-knuckles.equipped {
+    opacity: 0.6;
+    background-color: black;
+    color: seashell;
+    pointer-events: none;
 }
 
+#slime {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    border: 2px solid black;
+    grid-row: 7 / span 2;
+    grid-column: 3 / span 2;
+    background-color: darkolivegreen;
+}
+#equip-brass-knuckles {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:firebrick;
+    grid-row: 9 / span 2;
+    grid-column: 3 / span 2;
+    border: 2px solid black;
+    visibility: hidden;
+}
+#battle-menu {
+    display: grid;
+    grid-row: 13 / span 3;
+    grid-column: 7 / span 6;
+    background-color: lightseagreen;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: repeat(6, 1fr);
+}
+#battle-text-box {
+    background-color: darkgrey;
+    grid-row: 11 / span 2;
+    grid-column: 7 / span 6;
+}
+#battle-attack {
+    display: flex;
+    place-items: center;
+    font-size: 1.1em;
+    grid-row: 1 / span 1;
+    grid-column: 1 / span 2;
+    background-color: blueviolet;
+    visibility: hidden;
+}
+#battle-dodge {
+    display: flex;
+    place-items: center;
+    font-size: 1.1em;
+    grid-row: 1 /span 1;
+    grid-column: 3 / span 2;
+    background-color: bisque;
+    visibility: hidden;
+}
+#battle-abandon {
+    display: flex;
+    place-items: center;
+    font-size: 1.1em;
+    grid-row: 1 / span 1;
+    grid-column: 5 / span 2;
+    background-color: brown;
+    visibility: hidden;
+}
+#monster-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+
+    border: 2px solid black;
+    grid-column: 1 / span 6
+}
+#monster-name {
+    grid-row: 1 / span 2;
+    grid-template-columns: 1 / span 1;
+    background-color: brown;
+}
+#monster-health {
+    grid-row: 1 / span 2;
+    grid-template-columns: 2 / span 2;
+    background-color: beige;
+}
+#xp {
+    background-color:darkturquoise;
+    grid-row: 1 / span 2;
+    grid-column: 10 / span 3;
+}
