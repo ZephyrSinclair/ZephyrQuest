@@ -1,9 +1,13 @@
+html {
+    box-sizing: border-box;
+}
+
 #game-container {
     display: grid;
     border: 2px solid black;
-    height: 97vh;
-    grid-template-columns: repeat(12, 1fr);
+    height: 100vh;
     grid-template-rows: repeat(16, 1fr);
+    grid-template-columns: repeat(12, 1fr);
     gap: .8em;
 }
 
@@ -14,42 +18,247 @@
     grid-row: 1 / span 2;
     grid-column: 1 / span 6;
     background-color: aqua;
+    z-index: 1;
 }
 
+/* stats */ 
+#stats-container {
+    display: grid;
+    grid-template-rows: repeat(16, 1fr);
+    grid-template-columns: repeat(12, 1fr);
+    grid-row: 1 / span 14;
+    grid-column: 1 / span 12;
+    background-color: beige;
+    gap:.8em;
+    height: 97vh;
+    visibility: hidden;
+}
 #stats {
     display: flex;
     align-items: center;
     justify-content: center;
     grid-row: 3 / span 2;
-    grid-column: 1 / span 2;
+    grid-column: 1 / span 3;
     background-color: brown;
+    z-index: 1
 }
-#inventory {
+#strength {
     display: flex;
     align-items: center;
     justify-content: center;
-    grid-row: 9 / span 2;
-    grid-column: 1 / span 2;
-    background-color: bisque;
-    border: 2px solid black;
+    background-color: blue;
+    color: white;
+    grid-row: 6 / span 2;
+    grid-column: 3 / span 3;
 }
+#dexterity {
+    display: flex;
+    place-items: center;
+    justify-content: center;
+    background-color: chartreuse;
+    grid-row: 8 / span 2;
+    grid-column: 3 / span 3;
+}
+#defence {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: darkmagenta;
+    grid-row: 6 / span 2;
+    grid-column: 6 / span 3
+}
+#magic-defence {
+    display: flex;
+    place-items: center;
+    background-color: deepskyblue;
+    grid-row: 8 / span 2;
+    grid-column: 6 / span 3
+}
+#intelligence {
+    display: flex;
+    place-items: center;
+    justify-content: center;
+    background-color: coral;
+    grid-row: 10 / span 2;
+    grid-column: 3 / span 3;
+}
+
+/* store */
 #store {
     display: flex;
     align-items: center;
     justify-content: center;
-    grid-row: 5 / span 2;
-    grid-column: 1 / span 2;
+    grid-row: 3 / span 2;
+    grid-column: 4 / span 3;
     background-color: blueviolet;
+    z-index: 1;
 }
+
+#store-container {    
+    display: grid;
+    grid-template-rows: repeat(16, 1fr);
+    grid-template-columns: repeat(12, 1fr);
+    grid-row: 1 / span 14;
+    grid-column: 1 / span 12;
+    background-color:khaki;
+    gap:.8em;
+    height: 97vh;
+    visibility: hidden;    
+}
+
+#buy-health-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-row: 6 / span 2;
+    grid-column: 1/ span 3;
+    background-color: crimson;
+    border: 2px solid black;
+}
+#buy-mana-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-row: 5 / span 2;
+    grid-column: 5 / span 2;
+    background-color: beige;
+    border: 2px solid black;
+    grid-row: 8 / span 2;
+    grid-column: 1 / span 3;
+}
+#brass-knuckles {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: darkturquoise;
+    grid-row: 6 / span 2;
+    grid-column: 4 / span 3;
+    border: 2px solid black;
+}
+#claymore {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-row: 8 / span 2;
+    grid-column: 4 / span 3;
+    background-color: darkgoldenrod;
+    border: 2px solid black;
+}
+#chain-mail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: darkmagenta;
+    grid-row: 10 / span 2;
+    grid-column: 4 / span 3;
+    border: 2px solid black;
+}
+
+/*  inventory  */
+#inventory {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-row: 3 / span 2;
+    grid-column: 7 / span 3;
+    background-color: bisque;
+    border: 2px solid black;
+    z-index: 1;
+}
+#inventory-container {
+    display: grid;
+    grid-template-rows: repeat(16, 1fr);
+    grid-template-columns: repeat(12, 1fr);
+    grid-row: 1 / span 14;
+    grid-column: 1 / span 12;
+    background-color:rgb(140, 167, 240);
+    gap:.8em;
+    height: 98vh;
+    visibility: hidden;
+}
+
+#equip-brass-knuckles {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:firebrick;
+    grid-row: 6 / span 2;
+    grid-column: 1 / span 3;
+    border: 2px solid black;
+}
+
+#equip-claymore {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-row: 8 / span 2;
+    grid-column: 1 / span 3;
+    background-color:lightgreen;
+    border: 2px solid black;   
+    
+}
+
+/*  cave */
 #cave {
     display: flex;
     align-items: center;
     justify-content: center;
-    grid-row: 7 / span 2;
-    grid-column: 1 / span 2;
+    grid-row: 3 / span 2;
+    grid-column: 10 / span 3;
     background-color: cadetblue;
     border: 2px solid black;
+    z-index: 1;
 }
+#cave-container {
+      display: grid;
+    grid-template-rows: repeat(16, 1fr);
+    grid-template-columns: repeat(12, 1fr);
+    grid-row: 1 / span 14;
+    grid-column: 1 / span 12;
+    background-color:rgb(13, 130, 67);
+    gap:.8em;
+    height: 98vh;
+}
+#slime {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    border: 2px solid black;
+    grid-row: 6 / span 2;
+    grid-column: 1 / span 3;
+    background-color: darkolivegreen;
+
+}
+
+#fanged-beast {
+    display: flex;
+    place-items: center;
+    text-align: center;
+    grid-row: 8 / span 2;
+    grid-column: 1 / span 3;
+    background-color: darkkhaki;
+    border: 2px solid black;
+    
+}
+
+#dragon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+    grid-row: 10 / span 2;
+    grid-column: 1 / span 3;
+    border: 2px solid black;
+    font-size: 1.3em;;
+    
+}
+
+
+
+
+
+
+
 #inventory-display {
     display: flex;
     align-items: center;
@@ -59,23 +268,15 @@
     background-color: pink;
     border: 2px solid black;
 }
-#buy-health-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    grid-row: 5 / span 2;
-    grid-column: 3/ span 2;
-    background-color: crimson;
-    border: 2px solid black
-}
+
 #hp {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 1vw;
+    
     background-color: darkblue;
-    grid-row: 3 / span 2;
-    grid-column : 3 / span 2;
+    grid-row: 6 / span 2;
+    grid-column : 1 / span 2;
     color: seashell;
     font-size: 1.1rem;
 }
@@ -84,17 +285,12 @@
     align-items: center;
     justify-content: center;
     padding: 0 1vw;
-    grid-row: 3 / span 2;
-    grid-column: 5 /span 2;
+    grid-row: 8/ span 2;
+    grid-column: 1 /span 2;
     background-color:deepskyblue;
 }
 
-#buy-mana-btn {
-    grid-row: 5 / span 2;
-    grid-column: 5 / span 2;
-    background-color: beige;
-    border: 2px solid black;
-}
+
 
 #gold {
     display: flex;
@@ -104,24 +300,8 @@
     grid-row: 1 / span 2;
     grid-column: 7 / span 3;
 }
-#brass-knuckles {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: darkturquoise;
-    grid-row: 5 / span 2;
-    grid-column: 7 / span 2;
-    border: 2px solid black;
-}
-#claymore {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    grid-row: 5 / span 2;
-    grid-column: 9 / span 2;
-    background-color: darkgoldenrod;
-    border: 2px solid black;
-}
+
+
 #text-box {
     border: 2px solid black;
     grid-row: 13 / span 3;
@@ -142,30 +322,16 @@
 }
 #equip-brass-knuckles.equipped {
     opacity: 0.6;
-    background-color: black;
-    color: seashell;
+    background-color: grey;
+    pointer-events: none;
+}
+#equip-claymore.equipped {
+    opacity: 0.7;
+    background-color: grey;
     pointer-events: none;
 }
 
-#slime {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    border: 2px solid black;
-    grid-row: 7 / span 2;
-    grid-column: 3 / span 2;
-    background-color: darkolivegreen;
-}
-#equip-brass-knuckles {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color:firebrick;
-    grid-row: 9 / span 2;
-    grid-column: 3 / span 2;
-    border: 2px solid black;
-    visibility: hidden;
-}
+
 #battle-menu {
     display: grid;
     grid-row: 13 / span 3;
@@ -228,4 +394,21 @@
     background-color:darkturquoise;
     grid-row: 1 / span 2;
     grid-column: 10 / span 3;
+}
+
+
+
+
+
+
+
+#restart-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-row: 14 / span 2;
+    grid-column: 1 / span 6;
+    background-color: cornflowerblue;
+    border: 2px solid black;
+    visibility: hidden;
 }
