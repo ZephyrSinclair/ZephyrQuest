@@ -8,7 +8,12 @@ html {
     height: 100vh;
     grid-template-rows: repeat(16, 1fr);
     grid-template-columns: repeat(12, 1fr);
-    gap: .8em;
+    gap: .7em;
+    background-image: linear-gradient( 111.1deg,  rgb(21, 76, 86) 2.5%, rgba(17,20,34,1) 100.3% );
+}
+
+.border {
+    border: 2px solid seashell
 }
 
 #logo {
@@ -17,9 +22,24 @@ html {
     justify-content: center;
     grid-row: 1 / span 2;
     grid-column: 1 / span 6;
-    background-color: aqua;
     z-index: 1;
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-size: 1.5rem;
 }
+#gold {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-row: 1 / span 2;
+    grid-column: 7 / span 3;
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-size: 1.3rem;
+}
+
 
 /* stats */ 
 #stats-container {
@@ -32,6 +52,10 @@ html {
     gap:.8em;
     height: 97vh;
     visibility: hidden;
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-size: 1.3rem;
 }
 #stats {
     display: flex;
@@ -39,8 +63,35 @@ html {
     justify-content: center;
     grid-row: 3 / span 2;
     grid-column: 1 / span 3;
-    background-color: brown;
-    z-index: 1
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    z-index: 1;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+#hp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-row: 6 / span 2;
+    grid-column : 1 / span 3;
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-size: 1.1rem;
+}
+#mp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1vw;
+    grid-row: 8/ span 2;
+    grid-column: 1 /span 3;
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    
 }
 #strength {
     display: flex;
@@ -49,38 +100,50 @@ html {
     background-color: blue;
     color: white;
     grid-row: 6 / span 2;
-    grid-column: 3 / span 3;
+    grid-column: 4 / span 4;
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;  
 }
 #dexterity {
     display: flex;
     place-items: center;
     justify-content: center;
-    background-color: chartreuse;
     grid-row: 8 / span 2;
-    grid-column: 3 / span 3;
+    grid-column: 4 / span 4;
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
 }
 #defence {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: darkmagenta;
     grid-row: 6 / span 2;
-    grid-column: 6 / span 3
+    grid-column: 8 / span 4;
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
 }
 #magic-defence {
     display: flex;
-    place-items: center;
-    background-color: deepskyblue;
+    align-items: center;
+    justify-content: center;
     grid-row: 8 / span 2;
-    grid-column: 6 / span 3
+    grid-column: 8 / span 4;
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
 }
 #intelligence {
     display: flex;
     place-items: center;
     justify-content: center;
-    background-color: coral;
     grid-row: 10 / span 2;
-    grid-column: 3 / span 3;
+    grid-column: 4 / span 4;
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
 }
 
 /* store */
@@ -90,8 +153,12 @@ html {
     justify-content: center;
     grid-row: 3 / span 2;
     grid-column: 4 / span 3;
-    background-color: blueviolet;
     z-index: 1;
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-size: 1.3rem;
+    cursor: pointer;
 }
 
 #store-container {    
@@ -100,10 +167,13 @@ html {
     grid-template-columns: repeat(12, 1fr);
     grid-row: 1 / span 14;
     grid-column: 1 / span 12;
-    background-color:khaki;
     gap:.8em;
     height: 97vh;
-    visibility: hidden;    
+    visibility: hidden;
+    font-size: 1.2rem;
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
 }
 
 #buy-health-btn {
@@ -112,8 +182,7 @@ html {
     justify-content: center;
     grid-row: 6 / span 2;
     grid-column: 1/ span 3;
-    background-color: crimson;
-    border: 2px solid black;
+    cursor: pointer;
 }
 #buy-mana-btn {
     display: flex;
@@ -121,19 +190,17 @@ html {
     justify-content: center;
     grid-row: 5 / span 2;
     grid-column: 5 / span 2;
-    background-color: beige;
-    border: 2px solid black;
     grid-row: 8 / span 2;
     grid-column: 1 / span 3;
+    cursor: pointer;
 }
 #brass-knuckles {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: darkturquoise;
     grid-row: 6 / span 2;
     grid-column: 4 / span 3;
-    border: 2px solid black;
+    cursor: pointer;
 }
 #claymore {
     display: flex;
@@ -141,17 +208,15 @@ html {
     justify-content: center;
     grid-row: 8 / span 2;
     grid-column: 4 / span 3;
-    background-color: darkgoldenrod;
-    border: 2px solid black;
+    cursor: pointer;
 }
 #chain-mail {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: darkmagenta;
     grid-row: 10 / span 2;
     grid-column: 4 / span 3;
-    border: 2px solid black;
+    cursor: pointer;
 }
 
 /*  inventory  */
@@ -161,9 +226,12 @@ html {
     justify-content: center;
     grid-row: 3 / span 2;
     grid-column: 7 / span 3;
-    background-color: bisque;
-    border: 2px solid black;
     z-index: 1;
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-size: 1.3rem;
+    cursor: pointer;
 }
 #inventory-container {
     display: grid;
@@ -175,16 +243,18 @@ html {
     gap:.8em;
     height: 98vh;
     visibility: hidden;
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
 }
 
 #equip-brass-knuckles {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color:firebrick;
     grid-row: 6 / span 2;
     grid-column: 1 / span 3;
-    border: 2px solid black;
+    cursor: pointer;
 }
 
 #equip-claymore {
@@ -193,9 +263,7 @@ html {
     justify-content: center;
     grid-row: 8 / span 2;
     grid-column: 1 / span 3;
-    background-color:lightgreen;
-    border: 2px solid black;   
-    
+    cursor: pointer;
 }
 
 /*  cave */
@@ -205,39 +273,44 @@ html {
     justify-content: center;
     grid-row: 3 / span 2;
     grid-column: 10 / span 3;
-    background-color: cadetblue;
-    border: 2px solid black;
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-size: 1.3rem;
     z-index: 1;
+    cursor: pointer;
 }
 #cave-container {
-      display: grid;
+    display: grid;
     grid-template-rows: repeat(16, 1fr);
     grid-template-columns: repeat(12, 1fr);
     grid-row: 1 / span 14;
     grid-column: 1 / span 12;
-    background-color:rgb(13, 130, 67);
     gap:.8em;
     height: 98vh;
+    visibility: hidden;
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-size: 1.2rem;
 }
 #slime {
     display: flex;
     align-items: center;
+    justify-content: center;
     text-align: center;
-    border: 2px solid black;
     grid-row: 6 / span 2;
     grid-column: 1 / span 3;
-    background-color: darkolivegreen;
-
+    
 }
 
 #fanged-beast {
     display: flex;
     place-items: center;
+    justify-content: center;
     text-align: center;
     grid-row: 8 / span 2;
     grid-column: 1 / span 3;
-    background-color: darkkhaki;
-    border: 2px solid black;
     
 }
 
@@ -245,105 +318,85 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: red;
     grid-row: 10 / span 2;
     grid-column: 1 / span 3;
-    border: 2px solid black;
-    font-size: 1.3em;;
-    
+        
 }
 
-
-
-
-
-
+#text-box {
+    border: 2px solid black;
+    grid-row: 11 / span 2;
+    grid-column: 1 / span 12;
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-size: 1.3rem;
+    border: 2px solid seashell;
+}
 
 #inventory-display {
     display: flex;
     align-items: center;
     justify-content: center;
-    grid-row: 11 / span 2;
+    grid-row: 13/ span 2;
     grid-column: 1 / span 6;
-    background-color: pink;
-    border: 2px solid black;
-}
-
-#hp {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    background-color: darkblue;
-    grid-row: 6 / span 2;
-    grid-column : 1 / span 2;
-    color: seashell;
-    font-size: 1.1rem;
-}
-#mp {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 1vw;
-    grid-row: 8/ span 2;
-    grid-column: 1 /span 2;
-    background-color:deepskyblue;
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    border: 2px solid seashell
 }
 
 
 
-#gold {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: greenyellow;
-    grid-row: 1 / span 2;
-    grid-column: 7 / span 3;
-}
-
-
-#text-box {
-    border: 2px solid black;
-    grid-row: 13 / span 3;
-    grid-column: 1 / span 6;
-}
 
 #brass-knuckles.purchased {
-   background-color: black;
+   background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
    color: seashell;
     pointer-events: none;
-    opacity: 0.6;
+    opacity: 0.7;
 }
 #claymore.purchased {
-    opacity: 0.6;
-     background-color:black;
-     color: seashell;
+    opacity: 0.7;
+    
+     background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;;
     pointer-events: none;
 }
 #equip-brass-knuckles.equipped {
-    opacity: 0.6;
-    background-color: grey;
-    pointer-events: none;
+    opacity: 0.7;
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
 }
 #equip-claymore.equipped {
     opacity: 0.7;
-    background-color: grey;
-    pointer-events: none;
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
 }
 
 
 #battle-menu {
     display: grid;
-    grid-row: 13 / span 3;
-    grid-column: 7 / span 6;
-    background-color: lightseagreen;
+    grid-row: 6 / span 3;
+    grid-column: 5 / span 6;
     grid-template-rows: 1fr 1fr;
     grid-template-columns: repeat(6, 1fr);
+    display: none;
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-size: 1.3rem;
 }
 #battle-text-box {
     background-color: darkgrey;
-    grid-row: 11 / span 2;
-    grid-column: 7 / span 6;
+    grid-row: 9 / span 2;
+    grid-column: 5 / span 6;
+    display: none;
+    font-size: 1.3rem;
 }
 #battle-attack {
     display: flex;
@@ -351,8 +404,8 @@ html {
     font-size: 1.1em;
     grid-row: 1 / span 1;
     grid-column: 1 / span 2;
-    background-color: blueviolet;
-    visibility: hidden;
+    display: none;
+    cursor: pointer;
 }
 #battle-dodge {
     display: flex;
@@ -360,8 +413,8 @@ html {
     font-size: 1.1em;
     grid-row: 1 /span 1;
     grid-column: 3 / span 2;
-    background-color: bisque;
-    visibility: hidden;
+    display: none;
+    cursor: pointer;
 }
 #battle-abandon {
     display: flex;
@@ -369,45 +422,42 @@ html {
     font-size: 1.1em;
     grid-row: 1 / span 1;
     grid-column: 5 / span 2;
-    background-color: brown;
-    visibility: hidden;
+    display: none;
+    cursor: pointer;
 }
 #monster-stats {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
-
     border: 2px solid black;
-    grid-column: 1 / span 6
+    grid-column: 1 / span 6;
+   
 }
 #monster-name {
     grid-row: 1 / span 2;
     grid-template-columns: 1 / span 1;
-    background-color: brown;
 }
 #monster-health {
     grid-row: 1 / span 2;
     grid-template-columns: 2 / span 2;
-    background-color: beige;
 }
 #xp {
-    background-color:darkturquoise;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
     grid-row: 1 / span 2;
     grid-column: 10 / span 3;
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
 }
-
-
-
-
-
-
-
 #restart-button {
     display: flex;
     justify-content: center;
     align-items: center;
-    grid-row: 14 / span 2;
-    grid-column: 1 / span 6;
+    grid-row: 7 / span 2;
+    grid-column: 5 / span 6;
     background-color: cornflowerblue;
     border: 2px solid black;
     visibility: hidden;
