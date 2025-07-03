@@ -2,7 +2,6 @@ html {
     box-sizing: border-box;
     background-color: black;
     margin: 0;
-    overflow-y: hidden;
 }
 
 #game-container {
@@ -689,3 +688,4 @@ html {
         opacity: 1
     }
 }
+
