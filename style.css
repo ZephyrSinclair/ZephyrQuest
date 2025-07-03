@@ -689,3 +689,21 @@ html {
     }
 }
 
+@media only screen and (max-width: 480px) {
+    html {
+        font-size: 12px;
+    }
+    #battle-text-box {
+        grid-row: 9 / span 1;
+        grid-column: 4 / span 8
+    }
+    #cast-spell {
+        font-size: 1.6rem;
+    }
+    #cast-firebolt, #cast-heal {
+        font-size: 1.2rem;
+    }
+}
+
+
+
