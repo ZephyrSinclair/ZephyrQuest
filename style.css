@@ -524,7 +524,7 @@ html {
 #hpBattle {
     margin-top: 2vh;
     grid-row: 5 / span 2;
-    grid-column: 6 / span 2;
+    grid-column: 4 / span 2;
 }
 #hp-battle-text:hover  {
     background: linear-gradient( 102.8deg,  rgb(156, 24, 3) 12.3%, rgb(216, 80, 46) 48.6%, rgba(252,244,211,1) 85.1%) !important;
@@ -540,12 +540,12 @@ html {
 #mpBattle {
     margin-top: 2vh;
     grid-row: 5 / span 2;
-    grid-column: 8 / span 2;
+    grid-column: 6 / span 2;
 }
 
 #monster-name {
     grid-row: 7 / span 1;
-    grid-column: 6 / span 2;
+    grid-column: 4 / span 2;
     border: 2px solid seashell;
     font-size: 1.8rem;
      animation-name: cardEntrance;
@@ -555,7 +555,7 @@ html {
 }
 #monster-health {
     grid-row: 7 / span 1;
-    grid-column: 8 / span 2;
+    grid-column: 6 / span 2;
     border: 2px solid seashell;
     font-size: 1.9rem;
      animation-name: cardEntrance;
@@ -567,7 +567,7 @@ html {
     border: 2px solid seashell;
     font-size: 1.5rem;
     grid-row: 11 / span 1;
-    grid-column: 1 / span 3;
+    grid-column: 4 / span 2;
     display: none;
     cursor: pointer;
     animation-name: cardEntrance;
@@ -579,7 +579,7 @@ html {
     margin-top: 4.5vh;
     font-size: 1.3rem;
     grid-row: 6 / span 1;
-    grid-column: 10 / span 3;
+    grid-column: 8 / span 3;
     display: none;
     cursor: pointer;
     border: 2px solid seashell;
@@ -595,7 +595,7 @@ html {
     text-align: center;
     font-size: 1.1em;
     grid-row: 11 /span 1;
-    grid-column: 4 / span 3;
+    grid-column: 6 / span 2;
     display: none;
     cursor: pointer;
     border: 2px solid seashell;
@@ -608,7 +608,7 @@ html {
 }
 #cast-firebolt {
     grid-row: 11 / span 1;
-    grid-column: 7 / span 2;
+    grid-column: 8 / span 2;
     text-align: center;
     border: 2px solid seashell;
     display: none;
@@ -620,7 +620,7 @@ html {
 }
 #cast-heal {
     grid-row: 12 / span 1;
-    grid-column:  7 / span 2;
+    grid-column:  8 / span 2;
     text-align: center;
     border: 2px solid seashell;
     display: none;
@@ -634,7 +634,7 @@ html {
 #battle-text-box {
     background-color: aliceblue;
     grid-row: 8 / span 2;
-    grid-column: 5 / span 6;
+    grid-column: 4 / span 6;
     display: none;
     font-size: 1.2rem;
     color: black;
@@ -697,6 +697,25 @@ html {
         grid-row: 9 / span 1;
         grid-column: 4 / span 8
     }
+    #monster-name {
+           grid-row: 8 / span 1;
+    grid-column: 4 / span 2;
+    }
+    #monster-health {
+        grid-row: 8 / span 1;
+        grid-column: 6 / span 2;
+    }
+    #battle-abandon {
+        
+    }
+    #hpBattle {
+        grid-row: 7 / span 1;
+        grid-column: 4 / span 2;
+    }
+    #mpBattle {
+        grid-row: 7 / span 1;
+        grid-column: 6 / span 2;
+    }
     #cast-spell {
         font-size: 1.6rem;
     }
@@ -704,6 +723,8 @@ html {
         font-size: 1.2rem;
     }
 }
+
+
 
 
 
