@@ -1,23 +1,32 @@
-let health = 100;
+let health = 200;
+let maxHealth = 200;
 let xp = 1;
+let level = 1;
 
-let strength = 10;
-let dexterity = 5;
-let intelligence = 8;
-let defence = 0;
-let magicDefence = 0;
+let strength = 15;
+let dexterity = 8;
+let intelligence = 12;
+let defense = 10;
+let magicDefense = 0;
 
-let mana = 20;
+let mana = 100;
+let maxMana = 100;
 let gold = 1000;
 let isPurchased = false;
-let weaponInventory = [];
-let inventory = [];
 let isEquipped = false;
+let weaponInventory = [];
+let armorInventory = [];
+let spellInventory = [];
+let inventory = [];
+
 
 let fighting;
 let monsterHealth;
 
 let currentWeaponIndex = 0;
+let currentArmorIndex = 0;
+
+/* let currentSpellIndex = 0; */
 
 const stats = document.getElementById("stats");
 const store = document.getElementById("store");
@@ -32,62 +41,61 @@ const caveContainer = document.getElementById("cave-container");
 const textBoxEl = document.getElementById("text-box");
 const restartButton = document.getElementById("restart-button");
 
-const hpEl = document.getElementById("hp");
+const hpNav = document.getElementById("hp-nav");
+const hpNavText = document.getElementById("hp-nav-text");
+const levelText = document.getElementById("level-text");
+
+// const hpEl = document.getElementById("hp");
 const hpText = document.getElementById("hp-text");
 const manaText = document.getElementById("mp-text");
 const xpText = document.getElementById("xp-text");
 const strengthText = document.getElementById("strength-text");
 const dexterityText = document.getElementById("dexterity-text");
 const intelligenceText = document.getElementById("intelligence-text");
-const defenceText = document.getElementById("defence-text");
-const magicDefenceText = document.getElementById("magic-defence-text");
+const defenseText = document.getElementById("defense-text");
+const magicDefenseText = document.getElementById("magic-defense-text");
 
-const buyHpBtn = document.getElementById("buy-health-btn");
-const buyMpBtn = document.getElementById("buy-mana-btn");
+const hpBattleText = document.getElementById("hp-battle-text");
+const mpBattleText = document.getElementById("mp-battle-text");
+
 const goldEl = document.getElementById("gold");
 const goldText= document.getElementById("gold-text");
 const inventoryText = document.getElementById("inventory-text");
+
+const buyHpBtn = document.getElementById("buy-health-btn");
+const buyMpBtn = document.getElementById("buy-mana-btn");
+
 const brassKnuckles = document.getElementById("brass-knuckles");
 const claymore = document.getElementById("claymore");
+const buyOakStaffBtn = document.getElementById("oak-staff");
+const chainmail = document.getElementById("chainmail");
+const buyHealBtn = document.getElementById("buy-heal")
 
 const equipBrassKnuckles = document.getElementById("equip-brass-knuckles");
 const equipClaymore = document.getElementById("equip-claymore");
+const equipOakStaff = document.getElementById("equip-oak-staff");
+const equipChainmail = document.getElementById("equip-chainmail");
 
 const battleMenu = document.getElementById("battle-menu");
 const battleTextBox = document.getElementById("battle-text-box");
 
-
 const battleAttack = document.getElementById("battle-attack");
-const battleDodge = document.getElementById("battle-dodge");
 const battleAbandon = document.getElementById("battle-abandon");
+const castSpell = document.getElementById("cast-spell");
+const castFirebolt = document.getElementById("cast-firebolt");
+const castHeal = document.getElementById("cast-heal");
+
+
 const fightSlime = document.getElementById("slime");
 const fightFangedBeast = document.getElementById("fanged-beast");
+const fightEarthElemental = document.getElementById("earth-elemental");
 const fightDragon = document.getElementById("dragon")
+
 const monsterNameEl = document.getElementById("monster-name");
 const monsterHealthEl = document.getElementById("monster-health");
 
 const xpEl = document.getElementById("xp");
 
-function buyHealth () {
-    if (gold >= 10) {
-    gold -= 10;
-    goldText.innerText = gold;
-    health += 10;
-    hpText.innerText = health;
-    } else {
-        textBoxEl.innerText = "You do not have enough gold!"
-    }
-}
-
-
-function buyMana() {
-    if (gold >= 20) {
-        gold -= 20;
-        goldText.innerText = gold;
-        mana += 20;
-        manaText.innerText = mana;
-    }
-}
 
 // Objects
 const weapons = [
@@ -99,32 +107,82 @@ const weapons = [
     {
     name: "Brass Knuckles",
     power: 10,
-    cost: 20
+    cost: 30
 },
 {
     name: "Claymore",
-    power: 30,
+    power: 25,
     cost: 100
-}]
+},
+    {
+    name: "Oak Staff",
+    power: 5,
+    cost: 100,
+    intBonus: 20
+}];
+
+const armor = [
+    {
+        name: "Leather Vest",
+        defense: 1,
+        cost: 0
+    },
+    {
+        name: "Chainmail",
+        defense: 15,
+        cost: 100
+    },
+    {
+        name: "Diamond Plate",
+        defense: 40,
+        cost: 300
+    }
+];
+
+const spells = [
+    {
+        name: "firebolt",
+        dmgAmount: 50,
+        mpCost: 20
+    },
+    {
+        name: "heal",
+        healAmount: 50,
+        mpCost: 30
+    }
+]
 
 const monsters = [
 {
-	name: "slime",
-	level: 2,
-	health: 15
+    name: "Slime",
+    level: 2,
+    power: 5,
+    health: 50,
+    xp: 20,
+    shout: `"Owph! Please don't hurt me" - lvl 1 Slime`
 },
 {
-    name: "fanged beast",
-    level: 8,
-    health: 60
+    name: "Fanged beast",
+    level: 5,
+    power: 7,
+    health: 100,
+    xp: 33
+},
+{
+    name: "Earth Elemental",
+    level: 10,
+    power: 14,
+    health: 200,
+    xp: 50
 }, 
 {
-    name: "dragon",
-    level: 20,
-    health: 300
+    name: "Dragon",
+    level: 25,
+    power: 20,
+    health: 500,
+    xp: 200
  }
 ];
-
 
 // menu toggling
 
@@ -135,7 +193,7 @@ function statMenuToggle () {
         inventoryContainer.style.visibility = "hidden";
         caveContainer.style.visibility = "hidden";
         battleAttack.style.display = "none";
-        battleDodge.style.display = "none";
+        castSpell.style.display = "none";
         battleAbandon.style.display = "none";
         battleTextBox.innerText = "";
         monsterNameEl.innerText = "";
@@ -145,13 +203,14 @@ function statMenuToggle () {
         fightSlime.style.visibility = "hidden";
         fightFangedBeast.style.visibility = "hidden";
         fightDragon.style.visibility = "hidden";
+        fightEarthElemental.style.visibility = "hidden";
     } else {
         statContainer.style.visibility = "hidden";
         storeContainer.style.visibility = "hidden"
         inventoryContainer.style.visibility = "hidden";
         caveContainer.style.visibility = "hidden";
         battleAttack.style.display = "none";
-        battleDodge.style.display = "none";
+        castSpell.style.display = "none";
         battleAbandon.style.display = "none";
         battleTextBox.innerText = "";
         monsterNameEl.innerText = "";
@@ -161,6 +220,7 @@ function statMenuToggle () {
         fightSlime.style.visibility = "hidden";
         fightFangedBeast.style.visibility = "hidden";
         fightDragon.style.visibility = "hidden";
+        fightEarthElemental.style.visibility = "hidden";
     }
 }
 
@@ -171,7 +231,7 @@ function storeMenuToggle() {
         inventoryContainer.style.visibility = "hidden";
         caveContainer.style.visibility = "hidden";
         battleAttack.style.display = "none";
-        battleDodge.style.display = "none";
+        castSpell.style.display = "none";
         battleAbandon.style.display = "none";
         battleTextBox.innerText = "";
         monsterNameEl.innerText = "";
@@ -181,13 +241,15 @@ function storeMenuToggle() {
         fightSlime.style.visibility = "hidden";
         fightFangedBeast.style.visibility = "hidden";
         fightDragon.style.visibility = "hidden";
+        fightEarthElemental.style.visibility = "hidden";
+       
     } else {
         storeContainer.style.visibility = "hidden";
         statContainer.style.visibility = "hidden";
         storeContainer.style.visibility = "hidden";
         caveContainer.style.visibility = "hidden";
         battleAttack.style.display = "none";
-        battleDodge.style.display = "none";
+        castSpell.style.display = "none";
         battleAbandon.style.display = "none";
         battleTextBox.innerText = "";
         monsterNameEl.innerText = "";
@@ -197,6 +259,7 @@ function storeMenuToggle() {
         fightSlime.style.visibility = "hidden";
         fightFangedBeast.style.visibility = "hidden";
         fightDragon.style.visibility = "hidden";
+        fightEarthElemental.style.visibility = "hidden";
     }
 }
 
@@ -207,7 +270,7 @@ function inventoryMenuToggle() {
         storeContainer.style.visibility = "hidden";
         caveContainer.style.visibility = "hidden";
         battleAttack.style.display = "none";
-        battleDodge.style.display = "none";
+        castSpell.style.display = "none";
         battleAbandon.style.display = "none";
         battleTextBox.innerText = "";
         monsterNameEl.innerText = "";
@@ -217,13 +280,14 @@ function inventoryMenuToggle() {
         fightSlime.style.visibility = "hidden";
         fightFangedBeast.style.visibility = "hidden";
         fightDragon.style.visibility = "hidden";
+        fightEarthElemental.style.visibility = "hidden";
     } else {
         inventoryContainer.style.visibility = "hidden";
         statContainer.style.visibility = "hidden";
         storeContainer.style.visibility = "hidden"
         caveContainer.style.visibility = "hidden";
         battleAttack.style.display = "none";
-        battleDodge.style.display = "none";
+        castSpell.style.display = "none";
         battleAbandon.style.display = "none";
         battleTextBox.innerText = "";
         monsterNameEl.innerText = "";
@@ -233,6 +297,7 @@ function inventoryMenuToggle() {
         fightSlime.style.visibility = "hidden";
         fightFangedBeast.style.visibility = "hidden";
         fightDragon.style.visibility = "hidden";
+        fightEarthElemental.style.visibility = "hidden";
     }
 }
 
@@ -242,13 +307,18 @@ function caveMenuToggle() {
         battleMenu.style.display = "none";
         battleTextBox.style.display = "none";
         battleAttack.style.display = "none";
-        battleDodge.style.display = "none";
+        castSpell.style.display = "none";
+        castFirebolt.style.display = "none";
+        castHeal.style.display = "none"
         statContainer.style.visibility = "hidden";
         storeContainer.style.visibility = "hidden";
         inventoryContainer.style.visibility = "hidden"
         fightSlime.style.visibility = "visible";
         fightFangedBeast.style.visibility = "visible";
         fightDragon.style.visibility = "visible";
+        fightEarthElemental.style.visibility = "visible";
+        hpBattleText.innerText = health;
+        mpBattleText.innerText = mana;
     } else {
         caveContainer.style.visibility = "hidden";
         statContainer.style.visibility = "hidden";
@@ -257,17 +327,55 @@ function caveMenuToggle() {
         battleMenu.style.display = "none";
         battleTextBox.style.display = "none";
         battleAttack.style.display = "none";
-        battleDodge.style.display = "none";
+        castSpell.style.display = "none";
+        castFirebolt.style.display = "none";
+        castHeal.style.display = "none";
         battleAbandon.style.display = "none";
         fightSlime.style.visibility = "hidden";
         fightFangedBeast.style.visibility = "hidden";
         fightDragon.style.visibility = "hidden";  
+        fightEarthElemental.style.visibility = "hidden";
+    }
+}
+
+function spellListToggle () {
+    if (castFirebolt.style.display  === "none" || castHeal.style.display === "none") {
+    castFirebolt.style.display = "grid";
+    castHeal.style.display = "grid";
+    } else {
+    castFirebolt.style.display = "none";
+    castHeal.style.display = "none"
+}
+}
+
+function potionsAnimationFunction () {
+    potions.classList.add("fade-in-out");
+}
+
+function buyHealth () {
+    if (gold >= 10) {
+    gold -= 10;
+    goldText.innerText = gold;
+    health += 10;
+    hpText.innerText = health;
+    hpNavText.innerText = health;
+    } else {
+        textBoxEl.innerText = "You do not have enough gold!"
+    }
+}
+
+function buyMana() {
+    if (gold >= 20) {
+        gold -= 20;
+        goldText.innerText = gold;
+        mana += 20;
+        manaText.innerText = mana;
     }
 }
 
 function buyBrassKnuckles () {
-    if (gold >= 20) {
-    gold -= 20;
+    if (gold >= 30) {
+    gold -= 30;
     goldText.innerText = gold;
     isPurchased = true;
     brassKnuckles.classList.add("purchased");
@@ -289,8 +397,51 @@ function buyClaymore () {
         claymore.classList.add("purchased");
         claymore.innerText = "Purchased";
         weaponInventory.push(weapons[2]);
-        textBoxEl.innerText = `You bought a Claymore!` 
-        inventoryText.innerText = `Inventory: ${weaponInventory.map(w => w.name).join(", ")}`;
+        textBoxEl.innerText = `You bought a Claymore!`;
+    } else {
+        textBoxEl.innerText = "You do not have enough gold!"
+    }
+}
+
+function buyOakStaff () {
+    if (gold >= 50) {
+        gold -= 50;
+        goldText.innerText = gold;
+        isPurchased = true;
+        buyOakStaffBtn.classList.add("purchased");
+        buyOakStaffBtn.innerText = "Purchased";
+        weaponInventory.push(weapons[3]);
+        textBoxEl.innerText = `You bought an Oak Staff`;
+
+    } else {
+        textBoxEl.innerText = "You do not have enough gold!"
+    }
+}
+
+function buyChainmail () {
+    if (gold >= 100) {
+        gold -= 100;
+        goldText.innerText = gold;
+        isPurchased = true;
+        chainmail.classList.add("purchased");
+        chainmail.innerText = "Purchased";
+        armorInventory.push(armor[1]);
+        textBoxEl.innerText = `You bought Chainmail!`;
+        // inventoryText.innerText = `Armor inventory: ${armorInventory.map(w => w.name).join(", ")}`
+    } else {
+        textBoxEl.innerText = "You do not have enough gold!"
+    }
+}
+
+function buyHeal () {
+    if (gold >= 70) {
+        gold -= 70;
+        goldText.innerText = gold;
+        isPurchased = true;
+        buyHealBtn.classList.add("purchased");
+        buyHealBtn.innerText = "Purchased";
+        spellInventory.push(spells[1]);
+        textBoxEl.innerText = "You bought Heal spell!"
     } else {
         textBoxEl.innerText = "You do not have enough gold!"
     }
@@ -302,6 +453,11 @@ function equipBrassKnucklesFunction () {
         currentWeaponIndex = 1;
         textBoxEl.innerText = `You have equipped ${weapons[currentWeaponIndex].name}`;
         equipBrassKnuckles.classList.add("equipped");
+        equipBrassKnuckles.innerText = "Brass Knuckles Equipped"
+        equipClaymore.innerText = "Claymore (100g)";
+        equipOakStaff.innerText = "Oak Staff (50g)";
+        equipClaymore.classList.remove("equipped");
+        equipOakStaff.classList.remove("equipped");
     } else {
         textBoxEl.innerText = `You have not yet purchased ${weapons[1].name}`
     }
@@ -313,140 +469,263 @@ function equipClaymoreFunction () {
         currentWeaponIndex = 2;
         textBoxEl.innerText = `You have equipped ${weapons[currentWeaponIndex].name}`;
         equipClaymore.classList.add("equipped");
+        equipClaymore.innerText = "Claymore Equipped";
+        equipBrassKnuckles.innerText = "Brass Knuckles (30g)";
+        equipOakStaff.innerText = "Oak Staff (50g)";
+        equipBrassKnuckles.classList.remove("equipped");
+        equipOakStaff.classList.remove("equipped");
     } else {
         textBoxEl.innerText = `You have not yet purchased ${weapons[2].name}`
     }
 }
 
+function equipOakStaffFunction () {
+    const hasOakStaff = weaponInventory.some(w => w.name === "Oak Staff");
+    if (hasOakStaff) {
+        currentWeaponIndex = 3;
+        textBoxEl.innerText = `You have equipped ${weapons[currentWeaponIndex].name}`;
+        equipOakStaff.classList.add("equipped");
+        equipOakStaff.innerText = "Oak Staff Equipped";
+        equipBrassKnuckles.innerText = "Brass Knuckles (30g)";
+        equipClaymore.innerText = "Claymore (100g)";
+        equipBrassKnuckles.classList.remove("equipped");
+        equipClaymore.classList.remove("equipped");
+        // looking for a better way to factor in equipment dmgBonus in battle formulas
+        intelligence += 300;
+        intelligenceText.innerText = intelligence;
+    } else {
+        textBoxEl.innerHTML = `You have not yet purchased ${weapons[3].name}`;
+    }
+}
+
+function equipChainmailFunction () {
+    const hasChainmail = armorInventory.some(w => w.name === "Chainmail");
+    if (hasChainmail) {
+        currentArmorIndex = 1;
+        textBoxEl.innerText = `You have equipped ${armor[currentArmorIndex].name}`;
+        equipChainmail.classList.add("equipped");
+    } else {
+        textBoxEl.innerHTML = `You have not yet purchased ${armor[1].name}`;
+    }
+}
+
 function fightSlimeFunction () {
+    textBoxEl.classList.add("fade-in")
     caveContainer.style.visibility = "visible";
     battleAttack.style.display = "block";
-    battleDodge.style.display = "block";
+    castSpell.style.display = "block";
     battleAbandon.style.display = "block";
     battleMenu.style.display = "grid";
     battleTextBox.style.display = "block";
     fightFangedBeast.style.visibility = "hidden";
     fightDragon.style.visibility = "hidden";    
+    fightEarthElemental.style.visibility = "hidden";
     fighting = 0;
     monsterHealth = monsters[0].health;
-    monsterNameEl.innerText = monsters[0].name;
     monsterHealthEl.innerText = monsters[0].health;
+    monsterNameEl.innerText = monsters[0].name;
+    textBoxEl.innerHTML = monsters[0].shout;
 }
 
 function fightFangedBeastFunction () {
     caveContainer.style.visibility = "visible";
     battleAttack.style.display = "block";
-    battleDodge.style.display = "block";
+    castSpell.style.display = "block";
     battleAbandon.style.display = "block";
     battleMenu.style.display = "grid";
     battleTextBox.style.display = "block";
+    fightSlime.style.visibility = "hidden";
+    fightDragon.style.visibility = "hidden";
+    fightEarthElemental.style.visibility = "hidden";
     fighting = 1;
     monsterHealth = monsters[1].health;
     monsterNameEl.innerText = monsters[1].name;
     monsterHealthEl.innerText = monsters[1].health;
 }
 
-function fightDragonFunction () {
+function fightEarthElementalFunction () {
     caveContainer.style.visibility = "visible";
     battleAttack.style.display = "block";
-    battleDodge.style.display = "block";
+    castSpell.style.display = "block";
     battleAbandon.style.display = "block";
     battleMenu.style.display = "grid";
     battleTextBox.style.display = "block";
+    fightSlime.style.visibility = "hidden";
+    fightFangedBeast.style.visibility = "hidden"
+    fightDragon.style.visibility = "hidden";
     fighting = 2;
     monsterHealth = monsters[2].health;
     monsterNameEl.innerText = monsters[2].name;
     monsterHealthEl.innerText = monsters[2].health;
 }
 
+function fightDragonFunction () {
+    caveContainer.style.visibility = "visible";
+    battleAttack.style.display = "block";
+    castSpell.style.display = "block";
+    battleAbandon.style.display = "block";
+    battleMenu.style.display = "grid";
+    battleTextBox.style.display = "block";
+    fightSlime.style.visibility = "hidden";
+    fightFangedBeast.style.visibility = "hidden";
+    fightEarthElemental.style.visibility = "hidden";
+    fighting = 3;
+    monsterHealth = monsters[3].health;
+    monsterNameEl.innerText = monsters[3].name;
+    monsterHealthEl.innerText = monsters[3].health;
+}
+
+function updateBattleHpMp () {
+    hpBattleText.innerText = health;
+    mpBattleText.innerText = mana;
+    hpText.innerText = health;
+    manaText.innerText = mana;
+}
+
 function getMonsterAttackValue(level) {
-	const hit = (level * 5) - (Math.floor(Math.random() * xp)) - defence;
-	return Math.max(0, hit)
+    const hit = (level * 6) - armor[currentArmorIndex].defense - defense;
+    return Math.max(0, hit)
 }
     
 function attackMonster () {
-   const damage = weapons[currentWeaponIndex].power + strength;
-    if (isMonsterHit()) {
-         monsterHealth -= damage;
+    const damage = weapons[currentWeaponIndex].power + strength;
+    /* if (isMonsterHit()) {
+        monsterHealth = Math.max(0, monsterHealth - damage);
     } else {
         textBoxEl.innerText = `You miss.`;
-    }
+    } */
+    const monsterDamage = getMonsterAttackValue(monsters[fighting].power); 
+    health = Math.max (0, health - monsterDamage);
+    monsterHealth = monsterHealth - damage;
+    updateBattleHpMp();
+    if (monsterHealth <= 0) {
+        textBoxEl.innerText = `You defeated the ${monsters[fighting].name}`
+        defeatMonster()
+    } else { 
     monsterHealthEl.innerText = monsterHealth;
-    health -= getMonsterAttackValue(monsters[fighting].level);
-    hpText.innerText = health;
-    battleTextBox.innerText = `The ${monsters[fighting].name} attacks! You attack it with your ${weapons[currentWeaponIndex].name} you have ${health} hp remaining`;  
-    if (health <= 0) {
-        lose()
-    } 
-     else if (monsterHealth <= 0) {
-        if (fighting === 2) {
-            winGame();
-        } else {
-        defeatMonster();
-    }   
+    battleTextBox.innerText = `You attack the ${monsters[fighting].name} with your ${weapons[currentWeaponIndex].name}\n You deal ${damage} damage!\n The ${monsters[fighting].name} deals ${monsterDamage} damage to you.`;
+    battleTextBox.style.display = "block";
+    }
 }
+    // deleted dragon conditional to test if it would improve bug, it did not
+function castFireboltFunction () {
+        mana -= 20;
+        manaText.innerText = mana;
+        mpBattleText.innerText = mana;
+        let fireBoltDmg = spells[0].dmgAmount + intelligence;
+        const monsterDamage = getMonsterAttackValue(monsters[fighting].power); 
+    health = Math.max (0, health - monsterDamage);
+    monsterHealth = monsterHealth - fireBoltDmg;
+    updateBattleHpMp();
+    battleTextBox.innerText = `You cast a firebolt at the ${monsters[fighting].name}\n You deal ${fireBoltDmg} damage.\n The ${monsters[fighting].name} deals ${monsterDamage} to you.`;
+    if (monsterHealth <= 0) {
+        textBoxEl.innerText = `You defeated ${monsters[fighting].name}!`
+        defeatMonster()
+    } else {
+        battleTextBox.innerText = "You do not have enough mana!";
+    }
 }
 
+function castHealFunction () {
+    if (mana >= 30) {
+    mana -= 30;
+    let healAmount = spells[1].healAmount + intelligence;
+    let missingHealth = maxHealth - health;
+    let actualHealed = Math.min(healAmount, missingHealth);
+    health += actualHealed;
+    updateBattleHpMp();
+    battleTextBox.innerText = `You cast Heal and recover ${actualHealed} hp!`;
+    manaText.innerText = mana;
+    if (health > maxHealth) {
+    health = maxHealth;
+    hpText.innerText = maxHealth;
+    hpNavText.innerText = maxHealth;
+    manaText.innerText = mana;
+}
+} else {
+    battleTextBox.innerText = "You do not have enough mana!";
+}
+}
+/*
 function isMonsterHit () {
-    return Math.random() < .85 || health < 20
+    return Math.random() < .95 || health < 20
 }
-
+    */
 function battleAbandonFunction () {
     battleAttack.style.display = "none";
-    battleDodge.style.display = "none";
+    castSpell.style.display = "none";
     battleAbandon.style.display = "none";
     battleMenu.style.display = "none";
     battleTextBox.style.display = "none";
-    fightSlime.style.visibility = "visible";
-    fightFangedBeast.style.visibility = "visible";
-    fightDragon.style.visibility = "visible";
+    fightSlime.style.visibility = "hidden";
+    fightFangedBeast.style.visibility = "hidden";
+    fightDragon.style.visibility = "hidden";
     textBoxEl.innerText = `You ran away from the ${monsters[fighting].name}`
 }
 
 function defeatMonster() {
     gold += Math.floor(monsters[fighting].level * 6.7);
     goldText.innerText = gold;
-    let gainedXp = monsters[fighting].level; 
-    xp += monsters[fighting].level + 10;
-    let message = `You defeated the ${monsters[fighting].name}! You gained ${gainedXp} xp.`;
-    let leveledUp = false;
-    if (xp >= 100) {
-        leveledUp = true;
-        message += "\n Congratulations, you leveld up! Str, Dex, Int +10, Defense & Magic Defense +5"; 
-        levelUp()
-    }
+    let gainedXp = monsters[fighting].xp; 
+    xp += gainedXp;
     xpText.innerText = xp;
-    textBoxEl.innerText = message;
+    let leveledUp = false;
+    while (xp >= 100) {
+        levelUp();
+        xp -= 100;
+        leveledUp = true
+    } 
+    xpText.innerText = xp;
+    if (leveledUp) {
+        textBoxEl.innerText = `The ${monsters[fighting].name} dies! You leveled up! Str, Dex, Int +10, Defense & Magic Defense +5`;
+    } else {
+        textBoxEl.innerText = `You defeated the ${monsters[fighting].name}! You gained ${gainedXp} xp.`;
+    }
+    battleTextBox.style.display = "block";
     battleAttack.style.display = "none";
-    battleDodge.style.display = "none";
-    battleAbandon.style.display = "none";
-    battleMenu.style.display = "none";
-    battleTextBox.style.display = "none";
-    fightSlime.style.visibility = "visible";
-    fightFangedBeast.style.visibility = "visible";
-    fightDragon.style.visibility = "visible";
-}
+    setTimeout(() => {
+        battleAttack.style.display = "none";
+        castSpell.style.display = "none";
+        castFirebolt.style.display = "none";
+        castHeal.style.display = "none";
+        battleAbandon.style.display = "none";
+        battleMenu.style.display = "none";
+       // battleTextBox.style.display = "none";
+        fightSlime.style.visibility = "visible";
+        fightFangedBeast.style.visibility = "visible";
+        fightDragon.style.visibility = "visible";
+        fightEarthElemental.style.visibility = "visible";
+    }, 800); }
 
 function levelUp () {
-    strength += 10;
+    strength += 5;
     strengthText.innerText = strength;
-    dexterity += 10;
+    dexterity += 5;
     dexterityText.innerText = dexterity;
-    intelligence += 10;
+    intelligence += 5;
     intelligenceText.innerText = intelligence;
-    defence += 5;
-    defenceText.innerText = defence;
-    magicDefence += 5;
-    magicDefenceText.innerText = magicDefence;
-    xp -= 100;    
+    defense += 5;
+    defenseText.innerText = defense;
+    magicDefense += 5;
+    magicDefenseText.innerText = magicDefense;
+    level ++;
+    levelText.innerText = level;
+    health += 50;
+    maxHealth += 50;
+    hpText.innerText = health;
+    hpBattleText.innerText = health;
+    mana += 40;
+    maxMana += 40;
+    manaText.innerText = mana;
+    mpBattleText.innerText = mana;
 }
 
 function lose () {
+    console.log("lose() called");
     battleAttack.style.display = "none";
-    battleDodge.style.display = "none";
+    castSpell.style.display = "none";
     battleAbandon.style.display = "none";
     battleMenu.style.display = "none";
-    battleTextBox.style.display = "none";
     gold = 100;
     goldText.innerText = gold;
     health = 100;
@@ -454,21 +733,27 @@ function lose () {
     currentWeaponIndex = 0;
     weaponInventory = ["stick"];
     inventory = ["stick"];
-    textBoxEl.innerText = `${monsters[fighting].name} has killed you! New game?`;
-    restartButton.style.visibility = "visible";
+    battleTextBox.innerText = `${monsters[fighting].name} has killed you! New game?`;
+    battleTextBox.style.display = "block";
+    setTimeout(() => {
+        battleTextBox.style.display = "none";
+        restartButton.style.visibility = "visible";
+    }, 800);
 }
-
+    
 function winGame () {
     battleAttack.style.display = "none";
-    battleDodge.style.display = "none";
+    castSpell.style.display = "none";
     battleAbandon.style.display = "none";
     battleMenu.style.display = "none";
     battleTextBox.style.display = "none";
     textBoxEl.innerText = `You have slain the dragon! You have won the game! Would you like to play a new game?`;
     restartButton.style.visibility = "visible";
+    level = 1;
 }
 
 function restart() {
+    level = 1;
     gold = 100;
     goldText.innerText = gold;
     health = 100;
@@ -476,6 +761,10 @@ function restart() {
     xp = 0;
     xpText.innerText = xp;
     currentWeaponIndex = 0;
+    weapons[0].isPurchased = false;
+    weapons[1].isPurchased = false;
+    weapons[0].isEquipped = false;
+    weapons[1].isEquipped = false;
     weaponInventory = ["stick"];
     inventory = ["stick"];
     restartButton.style.visibility = "hidden";
@@ -484,19 +773,37 @@ function restart() {
 }
 
 // Event listeners
+// toggle events
 stats.addEventListener("click", statMenuToggle);
 store.addEventListener("click", storeMenuToggle);
 inventoryEl.addEventListener("click", inventoryMenuToggle);
 cave.addEventListener("click", caveMenuToggle);
+
+
 brassKnuckles.addEventListener("click", buyBrassKnuckles);
-equipBrassKnuckles.addEventListener("click", equipBrassKnucklesFunction);
-equipClaymore.addEventListener("click", equipClaymoreFunction)
 claymore.addEventListener("click", buyClaymore);
+chainmail.addEventListener("click", buyChainmail);
+buyOakStaffBtn.addEventListener("click", buyOakStaff);
+buyHealBtn.addEventListener("click", buyHeal);
+
+equipBrassKnuckles.addEventListener("click", equipBrassKnucklesFunction);
+equipClaymore.addEventListener("click", equipClaymoreFunction);
+equipOakStaff.addEventListener("click", equipOakStaffFunction);
+equipChainmail.addEventListener("click", equipChainmailFunction);
+
+potions.addEventListener("click", potionsAnimationFunction)
 buyHpBtn.addEventListener("click", buyHealth);
 buyMpBtn.addEventListener("click", buyMana);
+
 fightSlime.addEventListener("click", fightSlimeFunction);
 fightFangedBeast.addEventListener("click", fightFangedBeastFunction);
+fightEarthElemental.addEventListener("click", fightEarthElementalFunction)
 fightDragon.addEventListener("click", fightDragonFunction);
-battleAbandon.addEventListener("click", battleAbandonFunction);
+
 battleAttack.addEventListener("click", attackMonster);
+castSpell.addEventListener("click", spellListToggle);
+castFirebolt.addEventListener("click", castFireboltFunction)
+castHeal.addEventListener("click", castHealFunction);
+battleAbandon.addEventListener("click", battleAbandonFunction);
+
 restartButton.addEventListener("click", restart);
