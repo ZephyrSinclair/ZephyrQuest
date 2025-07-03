@@ -9,68 +9,79 @@
 
 <body>
     
-<main>
+<main>                                                                                                                   
     <section id="game-container">
 
-        <div id="logo" class="border">
-            ZephyrQuest
-        </div>
+        <div id="logo" class="border">ZephyrQuest</div>
 
-        <div id="stats" class="border">Stats</div>
+        <div id="gold" class="border card">Gold: <span id="gold-text" class="text-margin">1000</span></div>
+        <div id="xp" class="border card">XP: <span id="xp-text" class="text-margin"></span></div>
+        <div id ="level" class="border card">Level: <span id="level-text" class="text-margin">1</span></div>
+
+        <div id="text-box" class="border">Welcome to ZephyrQuest! An evil dragon has kidnapped the princess and is preventing the townsfolk from leaving! Defeat the dragon!</div>
+
+        <div id="stats" class="border card">Stats</div>
         
         <div id="stats-container">
-            <div id="hp" class="border">HP: <span id="hp-text">100</span></div>
-            <div id="mp" class="border">MP: <span id="mp-text">100</span></div>
-            <div id="strength" class="border">Strength: <span id="strength-text">20</span></div>
-            <div id="dexterity" class="border">Dexterity: <span id="dexterity-text">10</span></div>
-            <div id="intelligence" class="border">Intelligence: <span id="intelligence-text">15</span></div>
-            <div id="defence" class="border">Defence: <span id="defence-text"></span></div>
-            <div id="magic-defence" class="border">Magic Defence: <span id="magic-defence-text"></span></div>
+            <div id="hp" class="border card">HP: <span id="hp-text" class="text-margin card">200</span></div>
+            <div id="mp" class="border card">MP: <span id="mp-text">100</span></div>
+            <div id="strength" class="border card">Strength: <span id="strength-text" class="text-margin card">20</span></div>
+            <div id="dexterity" class="border card">Dexterity: <span id="dexterity-text" class="text-margin">10</span></div>
+            <div id="intelligence" class="border card">Intelligence: <span id="intelligence-text" class="text-margin">15</span></div>
+            <div id="defense" class="border card">Defense: <span id="defense-text" class="text-margin"></span></div>
+            <div id="magic-defense" class="border card">Magic Defense: <span id="magic-defense-text" class="text-margin"></span></div>
     </div>
          
-        <div id="store" class="border">Store</div>
+        <div id="store" class="border card">Store</div>
 
         <div id="store-container">
-             <div id="buy-health-btn" class="border">Buy Health (10g)</div>
-             <div id="buy-mana-btn" class="border">Buy Mana (20g)</div>
-             <div id="brass-knuckles" class="border">Brass Knuckles (20g)</div>
-             <div id="claymore" class="border">Claymore (100g)</div>
-             <div id="chain-mail" class="border">Chainmail(100g)</div>
+            <div id="potions" class="card">Potions</div>
+             <div id="buy-health-btn" class="border card buy">Buy Health (10g)</div>
+             <div id="buy-mana-btn" class="border card buy">Buy Mana (20g)</div>
+             <div id="weapons" class="card">Weapons</div>
+             <div id="brass-knuckles" class="border card buy">Brass Knuckles (30g)</div>
+             <div id="claymore" class="border card buy">Claymore (100g)</div>
+             <div id="oak-staff" class="border card buy">Oak Staff (50g)</div>
+             <div id="armor" class="card">Armor</div>
+             <div id="chainmail" class="border card buy">Chainmail (100g)</div>
+             <div id="spells" class="card">Spells</div>
+             <div id="buy-heal" class="border card buy">Heal (70g)</div>
         </div>
 
-        <div id="inventory" class="border">Inventory</div>
+        <div id="inventory" class="border card">Inventory</div>
 
-        <div id="inventory-container" class="border">
-            <div id="equip-brass-knuckles" class="border">Equip Brass Knuckles</div>
-            <div id="equip-claymore" class="border">Equip Claymore</div>
+        <div id="inventory-container">
+            
+            <div id="equip-brass-knuckles" class="border card">Equip Brass Knuckles</div>
+            <div id="equip-claymore" class="border card">Equip Claymore</div>
+            <div id="equip-oak-staff" class="border card">Equip Oak Staff</div>
+            <div id="equip-chainmail" class="border card">Equip Chainmail</div>
         </div>
        
-         <div id="cave" class="border">Cave</div>
+         <div id="cave" class="border card">Cave</div>
 
-        <div id="cave-container" class="border">
-           <div id="slime" class="border">Fight Slime</div>
-           <div id="fanged-beast" class="border">Fanged Beast</div>
-           <div id="dragon" class="border">Dragon</div>
+        <div id="cave-container">
+           <div id="slime" class="border card">Fight Slime</div>
+           <div id="fanged-beast" class="border card">Fanged Beast</div>
+           <div id="earth-elemental" class="border card">Earth Elemental</div>
+           <div id="dragon" class="border card">Dragon</div> 
+           
+            <div id="hpBattle">HP: <span id="hp-battle-text" class="card border"></span></div>
+            <div id="mpBattle">MP: <span id="mp-battle-text" class="card border"></span></div>
         </div>
 
-        <div id="gold" class="border">Gold: <span id="gold-text">1000</span></div>
-        <div id="xp" class="border">XP: <span id="xp-text"></span></div>
-
-        <div id="text-box" class="border">Text Box</div>
-        <div id="inventory-display" class="border"><div id=inventory-text></div>
-        </div>
-
-        <div id="battle-text-box" class="border"></div>
-
+        
         <div id="battle-menu" class="border">
-            <div id="battle-attack">Attack</div>
-            <div id="battle-dodge">Dodge</div>
-            <div id="battle-abandon">Run Away!</div>
-             <div id ="monster-stats">
-                <div id="monster-name">name</div>
-                <div id="monster-health">health</div>
-             </div>
+            <div id="monster-name" class="card">name</div>
+            <div id="monster-health" class="card">health</div>
+            <div id="battle-attack" class="card">Attack</div>
+            <div id="cast-spell" class="card">Magic</div>
+            <div id="battle-abandon" class="card">Run Away!</div>
+            <div id="cast-firebolt" class="card">Firebolt</div>
+            <div id="cast-heal" class="card">Heal</div>
         </div>
+                
+        <div id="battle-text-box" class="border">battle text box</div>
 
         <div id="restart-button">Restart?</div>
     </section>
