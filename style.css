@@ -1,45 +1,94 @@
 html {
     box-sizing: border-box;
+    background-color: black;
+    margin: 0;
+    overflow-y: hidden;
 }
 
 #game-container {
     display: grid;
-    border: 2px solid black;
-    height: 100vh;
+    height: 99vh;
     grid-template-rows: repeat(16, 1fr);
     grid-template-columns: repeat(12, 1fr);
-    gap: .7em;
-    background-image: linear-gradient( 111.1deg,  rgb(21, 76, 86) 2.5%, rgba(17,20,34,1) 100.3% );
-}
+    gap: .9em;
+    background-color: black;
+    /*background-image: linear-gradient( 111.1deg,  rgb(5, 33, 39) 2.5%, rgba(17,20,34,1) 100.3% );
+    */
+    padding: 0 2vw;
+    }
 
 .border {
     border: 2px solid seashell
 }
+.text-margin {
+    padding-left: 1.5vw
+}
 
 #logo {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     grid-row: 1 / span 2;
     grid-column: 1 / span 6;
     z-index: 1;
+    background: linear-gradient( 102.8deg,  rgb(111, 182, 205) 12.3%, rgb(48, 196, 114) 48.6%, rgb(56, 114, 33) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text; 
+    font-size: 2.2rem;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: italic;
+    font-weight: 900;
+    box-shadow: 5px 5px 10px seashell;
+    text-shadow: 11px 11px 11px;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.5rem;
+}
+
+
+#level {
+    border: 2px solid seashell;
+    grid-row: 1 / span 1;
+    grid-column: 7 / span 3;
     background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
 -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     font-size: 1.5rem;
 }
 #gold {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    grid-row: 1 / span 2;
+    grid-row: 2 / span 1;
     grid-column: 7 / span 3;
-    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgb(190, 216, 235) 48.6%, rgba(252,244,211,1) 85.1%);
 -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     font-size: 1.3rem;
 }
-
+#hp-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-row: 2 / span 1;
+    grid-column: 7 /span 3;
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgb(190, 216, 235) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-size: 1.3rem;
+    border: 2px solid seashell;
+}
+#xp {
+    font-size: 1.3rem;
+    grid-row: 2 / span 1;
+    grid-column: 10 / span 3;
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgb(190, 216, 235) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
 
 /* stats */ 
 #stats-container {
@@ -52,109 +101,84 @@ html {
     gap:.8em;
     height: 97vh;
     visibility: hidden;
-    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgb(190, 216, 235) 48.6%, rgba(252,244,211,1) 85.1%);
 -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     font-size: 1.3rem;
 }
 #stats {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    grid-row: 3 / span 2;
+    grid-row: 3 / span 1;
     grid-column: 1 / span 3;
-    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgb(190, 216, 235) 48.6%, rgba(252,244,211,1) 85.1%);
 -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     z-index: 1;
     font-size: 1.4rem;
     cursor: pointer;
 }
+
+
 #hp {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     grid-row: 6 / span 2;
     grid-column : 1 / span 3;
-    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgb(190, 216, 235) 48.6%, rgba(252,244,211,1) 85.1%);
 -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     font-size: 1.1rem;
 }
 #mp {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     padding: 0 1vw;
     grid-row: 8/ span 2;
     grid-column: 1 /span 3;
-    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgb(190, 216, 235) 48.6%, rgba(252,244,211,1) 85.1%);
 -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     
 }
 #strength {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: blue;
-    color: white;
     grid-row: 6 / span 2;
     grid-column: 4 / span 4;
-    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgb(190, 216, 235) 48.6%, rgba(252,244,211,1) 85.1%);
 -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;  
 }
 #dexterity {
-    display: flex;
-    place-items: center;
-    justify-content: center;
     grid-row: 8 / span 2;
     grid-column: 4 / span 4;
-    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgb(190, 216, 235) 48.6%, rgba(252,244,211,1) 85.1%);
 -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
-}
-#defence {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    grid-row: 6 / span 2;
-    grid-column: 8 / span 4;
-    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
--webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-}
-#magic-defence {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    grid-row: 8 / span 2;
-    grid-column: 8 / span 4;
-    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
--webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
 }
 #intelligence {
-    display: flex;
-    place-items: center;
-    justify-content: center;
     grid-row: 10 / span 2;
     grid-column: 4 / span 4;
-    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgb(190, 216, 235) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+#defense {
+    grid-row: 6 / span 2;
+    grid-column: 8 / span 4;
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgb(190, 216, 235) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+#magic-defense {
+    grid-row: 8 / span 2;
+    grid-column: 8 / span 4;
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgb(190, 216, 235) 48.6%, rgba(252,244,211,1) 85.1%);
 -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
 }
 
+
 /* store */
 #store {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    grid-row: 3 / span 2;
+    grid-row: 3 / span 1;
     grid-column: 4 / span 3;
     z-index: 1;
-    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgb(190, 216, 235) 48.6%, rgba(252,244,211,1) 85.1%);
 -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     font-size: 1.3rem;
@@ -170,64 +194,129 @@ html {
     gap:.8em;
     height: 97vh;
     visibility: hidden;
-    font-size: 1.2rem;
-    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
--webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
+    font-size: 1rem;
+    color: seashell;
+}
+#potions {
+    grid-row: 5 / span 2;
+    grid-column: 1 / span 3;
+    color: aquamarine;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 2.2rem;
+    border-bottom: 3px solid aquamarine;
+    border-right: 3px solid aquamarine;
+    text-shadow: 4px 4px 5px rgb(147, 147, 147);
+    /* text-shadow: 4px 4px 5px rgba(95, 245, 220, 0.7); */
+    /* box-shadow: 3px 3px 3px rgba(47, 130, 198, 0.768); */
+     box-shadow: 3px 3px 4px rgb(147, 147, 147);
+     animation-name: fadeInOut;
+     animation-duration: 3s;
+     animation-direction: alternate;
+     animation-timing-function: linear;
+     animation-iteration-count: infinite;
+    
+    /*
+    animation-name: cardEntrance;
+    animation-timing-function: ease-in;
+    animation-duration: 1s;
+    animation-fill-mode: backwards;
+    */
+}
+
+.buy {
+    background-image: linear-gradient( 45.8deg,  rgb(71, 35, 5) 17.3%, rgb(203, 153, 59) 48.6%, rgb(87, 64, 4) 85.1%);
+    border-radius: 4px;
+    color: rgb(23, 10, 4)
 }
 
 #buy-health-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    grid-row: 6 / span 2;
-    grid-column: 1/ span 3;
-    cursor: pointer;
+    grid-row: 7 / span 2;
+    grid-column: 1 / span 3;
+    cursor: pointer;    
 }
 #buy-mana-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    grid-row: 5 / span 2;
-    grid-column: 5 / span 2;
-    grid-row: 8 / span 2;
+    grid-row: 9 / span 2;
     grid-column: 1 / span 3;
+    
     cursor: pointer;
 }
+#weapons {
+    font-family:'Times New Roman', Times, serif;
+    font-size: 2.2rem;
+    grid-row: 5 / span 2;
+    grid-column: 4 / span 3;
+    color: rgba(251, 63, 53, 0.901);
+    border-left: 3px solid rgba(251, 63, 53, 0.901);
+    border-top: 3px solid rgba(251, 63, 53, 0.901);
+    text-shadow: 5px 5px 5px rgb(147, 147, 147);
+    box-shadow: -3px -3px 4px rgb(147, 147, 147);
+    animation-name: fadeInOut;
+    animation-duration: 3s;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-delay: 1.5s;
+}
 #brass-knuckles {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    grid-row: 6 / span 2;
+    grid-row: 7 / span 2;
     grid-column: 4 / span 3;
     cursor: pointer;
 }
 #claymore {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    grid-row: 8 / span 2;
+    grid-row: 9 / span 2;
     grid-column: 4 / span 3;
     cursor: pointer;
 }
-#chain-mail {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    grid-row: 10 / span 2;
+#oak-staff {
+    grid-row: 11 / span 2;
     grid-column: 4 / span 3;
+}
+#armor {
+    grid-row: 5 / span 2;
+    grid-column: 7 /span 3;
+    color: rgb(225, 165, 80);
+    border-right: 3px solid rgb(225, 165, 80);
+    border-top: 3px solid rgb(225, 165, 80);
+    text-shadow: 5px 5px 5px rgb(147, 147, 147);
+    box-shadow: 3px -3px 4px rgb(147, 147, 147);
+    font-size: 2.2rem;
+    animation-name: fadeInOut;
+     animation-duration: 3s;
+     animation-direction: alternate;
+     animation-timing-function: linear;
+     animation-iteration-count: infinite;
+}
+#chainmail {
+    grid-row: 7 / span 2;
+    grid-column: 7 / span 3;
     cursor: pointer;
 }
-
+#spells {
+    grid-row: 5 / span 2;
+    grid-column: 10 / span 3;
+    color: rgba(53, 139, 251, 0.901);
+    border-left: 3px solid rgba(53, 139, 251, 0.901);
+    border-bottom: 3px solid rgba(53, 139, 251, 0.901);
+    text-shadow: 5px 5px 5px rgb(147, 147, 147);
+    box-shadow: -3px 3px 4px rgb(147, 147, 147);
+    font-size: 2.2rem;
+    animation-name: fadeInOut;
+    animation-duration: 3s;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-delay: 1500ms;
+}
+#buy-heal {
+    grid-row: 7 / span 2;
+    grid-column: 10 / span 3;
+}
 /*  inventory  */
 #inventory {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    grid-row: 3 / span 2;
+    grid-row: 3 / span 1;
     grid-column: 7 / span 3;
     z-index: 1;
-    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+   background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgb(190, 216, 235) 48.6%, rgba(252,244,211,1) 85.1%);
 -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     font-size: 1.3rem;
@@ -239,11 +328,10 @@ html {
     grid-template-columns: repeat(12, 1fr);
     grid-row: 1 / span 14;
     grid-column: 1 / span 12;
-    background-color:rgb(140, 167, 240);
     gap:.8em;
     height: 98vh;
     visibility: hidden;
-    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgb(190, 216, 235) 48.6%, rgba(252,244,211,1) 85.1%);
 -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
 }
@@ -265,15 +353,118 @@ html {
     grid-column: 1 / span 3;
     cursor: pointer;
 }
-
-/*  cave */
-#cave {
+#equip-chainmail {
     display: flex;
     align-items: center;
     justify-content: center;
-    grid-row: 3 / span 2;
-    grid-column: 10 / span 3;
+    grid-row: 6 / span 2;
+    grid-column: 4 / span 3;
+    background-color: white;
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgb(190, 216, 235) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    cursor: pointer;
+}
+#equip-oak-staff {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-row: 10 / span 2;
+    grid-column: 1 / span 3;
+}
+
+
+#text-box {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    grid-row: 12 / span 2;
+    grid-column: 2 / span 10;
     background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-size: 1.5rem;
+    border: 2px solid seashell;
+    line-height: 1.5;
+}
+#inventory-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-row: 13/ span 2;
+    grid-column: 1 / span 6;
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgb(190, 216, 235) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    border: 2px solid seashell
+}
+
+#brass-knuckles.purchased {
+   color: seashell;
+    pointer-events: none;
+    background: linear-gradient( 102.8deg,  rgb(128, 17, 0) 12.3%, rgb(240, 190, 65) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    pointer-events: none;
+}
+#claymore.purchased {    
+     background: linear-gradient( 102.8deg,  rgb(128, 17, 0) 12.3%, rgb(240, 190, 65) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    pointer-events: none;
+}
+#oak-staff.purchased {
+    background: linear-gradient( 102.8deg,  rgb(128, 17, 0) 12.3%, rgb(240, 190, 65) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    pointer-events: none;
+}
+#chainmail.purchased {
+    background: linear-gradient( 102.8deg,  rgb(128, 17, 0) 12.3%, rgb(240, 190, 65) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    pointer-events: none;
+}
+#buy-heal.purchased {
+    background: linear-gradient( 102.8deg,  rgb(128, 17, 0) 12.3%, rgb(240, 190, 65) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    pointer-events: none;
+}
+
+#equip-brass-knuckles.equipped {    
+    background: linear-gradient( 102.8deg,  rgb(128, 17, 0) 12.3%, rgb(240, 190, 65) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    pointer-events: none;
+}
+#equip-claymore.equipped {    
+    background: linear-gradient( 102.8deg,  rgb(128, 17, 0) 12.3%, rgb(240, 190, 65) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    pointer-events: none;
+}
+#equip-oak-staff.equipped {    
+    background: linear-gradient( 102.8deg,  rgb(128, 17, 0) 12.3%, rgb(240, 190, 65) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    pointer-events: none;
+}
+#equip-chainmail.equipped {
+    background: linear-gradient( 102.8deg,  rgb(128, 17, 0) 12.3%, rgb(240, 190, 65) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    pointer-events: none;
+}
+
+
+/*  cave */
+#cave {
+    grid-row: 3 / span 1;
+    grid-column: 10 / span 3;
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgb(190, 216, 235) 48.6%, rgba(252,244,211,1) 85.1%);
 -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     font-size: 1.3rem;
@@ -286,172 +477,171 @@ html {
     grid-template-columns: repeat(12, 1fr);
     grid-row: 1 / span 14;
     grid-column: 1 / span 12;
-    gap:.8em;
+    gap:1em;
     height: 98vh;
     visibility: hidden;
-    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgb(190, 216, 235) 48.6%, rgba(252,244,211,1) 85.1%);
 -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     font-size: 1.2rem;
 }
+
 #slime {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    grid-row: 6 / span 2;
+    grid-row: 5 / span 2;
     grid-column: 1 / span 3;
-    
+    cursor: pointer;
 }
-
 #fanged-beast {
-    display: flex;
-    place-items: center;
-    justify-content: center;
-    text-align: center;
-    grid-row: 8 / span 2;
+    grid-row: 7 / span 2;
     grid-column: 1 / span 3;
-    
+    cursor: pointer;
 }
-
+#earth-elemental {
+    grid-row: 9 / span 2;
+    grid-column: 1 / span 3;
+    cursor: pointer;
+}
 #dragon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    grid-row: 10 / span 2;
+    grid-row: 11/ span 2;
     grid-column: 1 / span 3;
-        
+    cursor: pointer;
 }
 
-#text-box {
-    border: 2px solid black;
-    grid-row: 11 / span 2;
-    grid-column: 1 / span 12;
-    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
--webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    font-size: 1.3rem;
-    border: 2px solid seashell;
-}
-
-#inventory-display {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    grid-row: 13/ span 2;
-    grid-column: 1 / span 6;
-    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
--webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    border: 2px solid seashell
-}
-
-
-
-
-#brass-knuckles.purchased {
-   background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
--webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-   color: seashell;
-    pointer-events: none;
-    opacity: 0.7;
-}
-#claymore.purchased {
-    opacity: 0.7;
-    
-     background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
--webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;;
-    pointer-events: none;
-}
-#equip-brass-knuckles.equipped {
-    opacity: 0.7;
-    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
--webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-}
-#equip-claymore.equipped {
-    opacity: 0.7;
-    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
--webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-}
-
-
+/*  Battle Menu  */
 #battle-menu {
     display: grid;
-    grid-row: 6 / span 3;
-    grid-column: 5 / span 6;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: repeat(6, 1fr);
+    grid-row: 1 / span 16;
+    grid-column: 1 / span 12;
+    grid-template-rows: repeat(16, 1fr);
+    grid-template-columns: repeat(12, 1fr);
     display: none;
-    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+    /* background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
+-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text; */
+    color: seashell;
+    font-size: .8rem;
+    gap: 1em;
+}
+#hpBattle {
+    margin-top: 2vh;
+    grid-row: 5 / span 2;
+    grid-column: 6 / span 2;
+}
+#hp-battle-text:hover  {
+    background: linear-gradient( 102.8deg,  rgb(156, 24, 3) 12.3%, rgb(216, 80, 46) 48.6%, rgba(252,244,211,1) 85.1%) !important;
+-webkit-text-fill-color: transparent !important;
+    -webkit-background-clip: text !important;
+    
+}
+#mp-battle-text:hover {
+    background: linear-gradient( 102.8deg,  rgb(88, 2, 78) 12.3%, rgb(115, 46, 205) 48.6%, rgb(24, 175, 195) 85.1%);
 -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
-    font-size: 1.3rem;
 }
-#battle-text-box {
-    background-color: darkgrey;
-    grid-row: 9 / span 2;
-    grid-column: 5 / span 6;
-    display: none;
-    font-size: 1.3rem;
+#mpBattle {
+    margin-top: 2vh;
+    grid-row: 5 / span 2;
+    grid-column: 8 / span 2;
 }
-#battle-attack {
-    display: flex;
-    place-items: center;
-    font-size: 1.1em;
-    grid-row: 1 / span 1;
-    grid-column: 1 / span 2;
-    display: none;
-    cursor: pointer;
-}
-#battle-dodge {
-    display: flex;
-    place-items: center;
-    font-size: 1.1em;
-    grid-row: 1 /span 1;
-    grid-column: 3 / span 2;
-    display: none;
-    cursor: pointer;
-}
-#battle-abandon {
-    display: flex;
-    place-items: center;
-    font-size: 1.1em;
-    grid-row: 1 / span 1;
-    grid-column: 5 / span 2;
-    display: none;
-    cursor: pointer;
-}
-#monster-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-    border: 2px solid black;
-    grid-column: 1 / span 6;
-   
-}
+
 #monster-name {
-    grid-row: 1 / span 2;
-    grid-template-columns: 1 / span 1;
+    grid-row: 7 / span 1;
+    grid-column: 6 / span 2;
+    border: 2px solid seashell;
+    font-size: 1.8rem;
+     animation-name: cardEntrance;
+    animation-timing-function: ease-in;
+    animation-duration: 1s;
+    animation-fill-mode: backwards;
 }
 #monster-health {
-    grid-row: 1 / span 2;
-    grid-template-columns: 2 / span 2;
+    grid-row: 7 / span 1;
+    grid-column: 8 / span 2;
+    border: 2px solid seashell;
+    font-size: 1.9rem;
+     animation-name: cardEntrance;
+    animation-timing-function: ease-in;
+    animation-duration: 1s;
+    
 }
-#xp {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#battle-attack {
+    border: 2px solid seashell;
+    font-size: 1.5rem;
+    grid-row: 11 / span 1;
+    grid-column: 1 / span 3;
+    display: none;
+    cursor: pointer;
+    animation-name: cardEntrance;
+    animation-timing-function: ease-in;
+    animation-duration: 1s;
+    
+}
+#battle-abandon {
+    margin-top: 4.5vh;
     font-size: 1.3rem;
-    grid-row: 1 / span 2;
+    grid-row: 6 / span 1;
     grid-column: 10 / span 3;
-    background: linear-gradient( 102.8deg,  rgba(183,235,252,1) 12.3%, rgba(248,193,232,1) 48.6%, rgba(252,244,211,1) 85.1%);
--webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
+    display: none;
+    cursor: pointer;
+    border: 2px solid seashell;
+    animation-name: cardEntrance;
+    animation-timing-function: ease-in;
+    animation-duration: 1s;
+    
 }
+#cast-spell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.1em;
+    grid-row: 11 /span 1;
+    grid-column: 4 / span 3;
+    display: none;
+    cursor: pointer;
+    border: 2px solid seashell;
+    font-size: 1.4rem;
+    animation-name: cardEntrance;
+    animation-timing-function: ease-in;
+    animation-duration: 1s;
+    
+    
+}
+#cast-firebolt {
+    grid-row: 11 / span 1;
+    grid-column: 7 / span 2;
+    text-align: center;
+    border: 2px solid seashell;
+    display: none;
+    cursor: pointer;
+    animation-name: cardEntrance;
+    animation-timing-function: ease-in;
+    animation-duration: 1s;
+    animation-fill-mode: backwards;
+}
+#cast-heal {
+    grid-row: 12 / span 1;
+    grid-column:  7 / span 2;
+    text-align: center;
+    border: 2px solid seashell;
+    display: none;
+    cursor: pointer;
+    animation-name: cardEntrance;
+    animation-timing-function: ease-in;
+    animation-duration: 1s;
+    animation-fill-mode: backwards;
+}
+
+#battle-text-box {
+    background-color: aliceblue;
+    grid-row: 8 / span 2;
+    grid-column: 5 / span 6;
+    display: none;
+    font-size: 1.2rem;
+    color: black;
+    z-index: 10;
+}
+ 
 #restart-button {
     display: flex;
     justify-content: center;
@@ -461,4 +651,41 @@ html {
     background-color: cornflowerblue;
     border: 2px solid black;
     visibility: hidden;
+}
+
+.fade-in {
+    animation-name: cardEntrance;
+    animation-timing-function: ease-in;
+    animation-duration: 2s;
+}
+
+.fade-in-out {
+    animation-name: fadeInOut;
+    animation-duration: infinite;
+    animation-direction: alternate;
+    animation-duration: 2s;
+}
+
+@keyframes cardEntrance {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0
+    }
+    50% {
+        opacity: 0.5
+    }
+    100% {
+        opacity: 1
+    }
 }
