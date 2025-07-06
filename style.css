@@ -47,7 +47,7 @@ html {
     justify-content: center;
     text-align: center;
     font-family:Georgia, 'Times New Roman', Times, serif;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 
@@ -190,10 +190,9 @@ html {
     grid-template-columns: repeat(12, 1fr);
     grid-row: 1 / span 14;
     grid-column: 1 / span 12;
-    gap:.8em;
+    gap: 1.3rem;
     height: 97vh;
     visibility: hidden;
-    font-size: 1rem;
     color: seashell;
 }
 #potions {
@@ -723,8 +722,6 @@ html {
         font-size: 1.2rem;
     }
 }
-
-
 
 
 
