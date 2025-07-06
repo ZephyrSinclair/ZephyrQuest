@@ -18,6 +18,7 @@ let weaponInventory = [];
 let armorInventory = [];
 let spellInventory = [];
 let inventory = [];
+let lootInventory = [];
 
 
 let fighting;
@@ -55,6 +56,8 @@ const intelligenceText = document.getElementById("intelligence-text");
 const defenseText = document.getElementById("defense-text");
 const magicDefenseText = document.getElementById("magic-defense-text");
 
+const hpBattle = document.getElementById("hpBattle");
+const mpBattle = document.getElementById("mpBattle");
 const hpBattleText = document.getElementById("hp-battle-text");
 const mpBattleText = document.getElementById("mp-battle-text");
 
@@ -184,6 +187,13 @@ const monsters = [
  }
 ];
 
+const lootTable = [
+    "Potion of Healing",
+    "Gold Ring",
+    "Enchanted Gem",
+    "Treasure Map",
+    "Mystic Scroll"
+];
 // menu toggling
 
 function statMenuToggle () {
@@ -454,8 +464,8 @@ function equipBrassKnucklesFunction () {
         textBoxEl.innerText = `You have equipped ${weapons[currentWeaponIndex].name}`;
         equipBrassKnuckles.classList.add("equipped");
         equipBrassKnuckles.innerText = "Brass Knuckles Equipped"
-        equipClaymore.innerText = "Claymore (100g)";
-        equipOakStaff.innerText = "Oak Staff (50g)";
+        equipClaymore.innerText = "Claymore";
+        equipOakStaff.innerText = "Oak Staff";
         equipClaymore.classList.remove("equipped");
         equipOakStaff.classList.remove("equipped");
     } else {
@@ -470,8 +480,8 @@ function equipClaymoreFunction () {
         textBoxEl.innerText = `You have equipped ${weapons[currentWeaponIndex].name}`;
         equipClaymore.classList.add("equipped");
         equipClaymore.innerText = "Claymore Equipped";
-        equipBrassKnuckles.innerText = "Brass Knuckles (30g)";
-        equipOakStaff.innerText = "Oak Staff (50g)";
+        equipBrassKnuckles.innerText = "Brass Knuckles";
+        equipOakStaff.innerText = "Oak Staff";
         equipBrassKnuckles.classList.remove("equipped");
         equipOakStaff.classList.remove("equipped");
     } else {
@@ -486,8 +496,8 @@ function equipOakStaffFunction () {
         textBoxEl.innerText = `You have equipped ${weapons[currentWeaponIndex].name}`;
         equipOakStaff.classList.add("equipped");
         equipOakStaff.innerText = "Oak Staff Equipped";
-        equipBrassKnuckles.innerText = "Brass Knuckles (30g)";
-        equipClaymore.innerText = "Claymore (100g)";
+        equipBrassKnuckles.innerText = "Brass Knuckles";
+        equipClaymore.innerText = "Claymore";
         equipBrassKnuckles.classList.remove("equipped");
         equipClaymore.classList.remove("equipped");
         // looking for a better way to factor in equipment dmgBonus in battle formulas
@@ -504,6 +514,7 @@ function equipChainmailFunction () {
         currentArmorIndex = 1;
         textBoxEl.innerText = `You have equipped ${armor[currentArmorIndex].name}`;
         equipChainmail.classList.add("equipped");
+        equipChainmail.innerText = "Chainmail Equipped";
     } else {
         textBoxEl.innerHTML = `You have not yet purchased ${armor[1].name}`;
     }
@@ -589,18 +600,18 @@ function getMonsterAttackValue(level) {
     
 function attackMonster () {
     const damage = weapons[currentWeaponIndex].power + strength;
-    /* if (isMonsterHit()) {
-        monsterHealth = Math.max(0, monsterHealth - damage);
-    } else {
-        textBoxEl.innerText = `You miss.`;
-    } */
     const monsterDamage = getMonsterAttackValue(monsters[fighting].power); 
     health = Math.max (0, health - monsterDamage);
     monsterHealth = monsterHealth - damage;
     updateBattleHpMp();
+    if (health <= 0) {
+        lose();
+        return;
+    }
     if (monsterHealth <= 0) {
         textBoxEl.innerText = `You defeated the ${monsters[fighting].name}`
-        defeatMonster()
+        defeatMonster();
+        return
     } else { 
     monsterHealthEl.innerText = monsterHealth;
     battleTextBox.innerText = `You attack the ${monsters[fighting].name} with your ${weapons[currentWeaponIndex].name}\n You deal ${damage} damage!\n The ${monsters[fighting].name} deals ${monsterDamage} damage to you.`;
@@ -618,6 +629,9 @@ function castFireboltFunction () {
     monsterHealth = monsterHealth - fireBoltDmg;
     updateBattleHpMp();
     battleTextBox.innerText = `You cast a firebolt at the ${monsters[fighting].name}\n You deal ${fireBoltDmg} damage.\n The ${monsters[fighting].name} deals ${monsterDamage} to you.`;
+    if (health <= 0) {
+        lose();
+    }
     if (monsterHealth <= 0) {
         textBoxEl.innerText = `You defeated ${monsters[fighting].name}!`
         defeatMonster()
@@ -681,6 +695,7 @@ function defeatMonster() {
     } else {
         textBoxEl.innerText = `You defeated the ${monsters[fighting].name}! You gained ${gainedXp} xp.`;
     }
+    monsterLoot()
     battleTextBox.style.display = "block";
     battleAttack.style.display = "none";
     setTimeout(() => {
@@ -695,7 +710,21 @@ function defeatMonster() {
         fightFangedBeast.style.visibility = "visible";
         fightDragon.style.visibility = "visible";
         fightEarthElemental.style.visibility = "visible";
-    }, 800); }
+    }, 800); 
+    
+};
+    
+function monsterLoot() {
+    if (Math.random() < 0.5) {
+        const loot = lootTable[Math.floor(Math.random() * lootTable.length)];
+        lootInventory.push(loot);
+        textBoxEl.innerText += `\nYou found a ${loot}!`;
+        return loot
+    } else {
+        return null;
+    }
+}
+    
 
 function levelUp () {
     strength += 5;
@@ -721,7 +750,6 @@ function levelUp () {
 }
 
 function lose () {
-    console.log("lose() called");
     battleAttack.style.display = "none";
     castSpell.style.display = "none";
     battleAbandon.style.display = "none";
@@ -733,8 +761,8 @@ function lose () {
     currentWeaponIndex = 0;
     weaponInventory = ["stick"];
     inventory = ["stick"];
-    battleTextBox.innerText = `${monsters[fighting].name} has killed you! New game?`;
-    battleTextBox.style.display = "block";
+    textBoxEl.innerText = `${monsters[fighting].name} has killed you! New game?`;
+    // battleTextBox.style.display = "block";
     setTimeout(() => {
         battleTextBox.style.display = "none";
         restartButton.style.visibility = "visible";
@@ -770,6 +798,14 @@ function restart() {
     restartButton.style.visibility = "hidden";
     textBoxEl.innerText = ``;
     battleTextBox.innerText = ``;
+    fightSlime.style.visibility = "hidden";
+    fightFangedBeast.style.visibility = "hidden";
+    fightEarthElemental.style.visibility = "hidden";
+    fightDragon.style.visibility = "hidden";
+    hpBattleText.style.visibility = "hidden";
+    mpBattleText.style.visibility = "hidden";
+    hpBattle.style.visibility = "hidden";
+    mpBattle.style.visibility = "hidden";
 }
 
 // Event listeners
